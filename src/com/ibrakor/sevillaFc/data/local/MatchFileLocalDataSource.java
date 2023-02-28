@@ -2,7 +2,7 @@ package com.ibrakor.sevillaFc.data.local;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ibrakor.sevillaFc.domain.models.Referee;
+import com.ibrakor.sevillaFc.domain.models.Match;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,31 +14,32 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class RefereeFileLocalDataSource {
+public class MatchFileLocalDataSource {
 
-    private RefereeFileLocalDataSource() {
+    private MatchFileLocalDataSource(){
+
     }
-    private static RefereeFileLocalDataSource instance = null;
 
+    private static MatchFileLocalDataSource instance = null;
     private Gson gson = new Gson();
 
-    private final Type typeAlumnList = new TypeToken<ArrayList<Referee>>() {
+    private final Type typeAlumnList = new TypeToken<ArrayList<Match>>() {
     }.getType();
 
 
 
-    public void save(Referee referee) {
-        List<Referee> referees = findAll();
-        referees.add(referee);
-        saveToFile(referees);
+    public void save(Match match) {
+        List<Match> matchs = findAll();
+        matchs.add(match);
+        saveToFile(matchs);
     }
 
 
 
-    private void saveToFile(List<Referee> referees) {
+    private void saveToFile(List<Match> matchs) {
         try {
-            FileWriter myWriter = new FileWriter("referees.txt");
-            myWriter.write(gson.toJson(referees));
+            FileWriter myWriter = new FileWriter("matchs.txt");
+            myWriter.write(gson.toJson(matchs));
             myWriter.close();
             System.out.println("Arbitro guardado correctamente");
         } catch (IOException e) {
@@ -48,19 +49,19 @@ public class RefereeFileLocalDataSource {
     }
 
 
-    public Referee findById(Integer refereeId) {
-        List<Referee> referees = findAll();
-        for (Referee referee : referees) {
-            if (Objects.equals(referee.getId(), refereeId)) {
-                return referee;
+    public Match findById(Integer matchId) {
+        List<Match> matchs = findAll();
+        for (Match match : matchs) {
+            if (Objects.equals(match.getId(), matchId)) {
+                return match;
             }
         }
         return null;
     }
 
-    public List<Referee> findAll() {
+    public List<Match> findAll() {
         try {
-            File myObj = new File("referees.txt");
+            File myObj = new File("matchs.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -72,14 +73,15 @@ public class RefereeFileLocalDataSource {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return new ArrayList<Referee>();
+        return new ArrayList<Match>();
     }
 
-    public static RefereeFileLocalDataSource getInstance() {
-        if (instance == null) {
-            instance = new RefereeFileLocalDataSource();
+    public static MatchFileLocalDataSource getInstance(){
+        if (instance==null){
+            instance = new MatchFileLocalDataSource();
         }
         return instance;
     }
+    
 
 }
