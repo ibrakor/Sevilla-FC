@@ -2,12 +2,17 @@ package com.ibrakor.sevillaFc.presentation;
 
 public class MenuView {
 
-    public void createNewReferee(){
-        NewRefereeFrom newRefereeFrom = new NewRefereeFrom();
-        newRefereeFrom.createNewReferee();
+    public void createNewRefereeForm(){
+        NewRefereeForm newRefereeForm = new NewRefereeForm();
+        newRefereeForm.createNewReferee();
+    }
+    public void createNewTeamForm(){
+        NewTeamForm newTeamForm = new NewTeamForm();
+        newTeamForm.createNewTeam();
     }
 
     public void init(){
-        createNewReferee();
+        createNewRefereeForm();
+        createNewTeamForm();
     }
 }

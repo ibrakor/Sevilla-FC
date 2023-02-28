@@ -5,7 +5,7 @@ import com.ibrakor.sevillaFc.data.local.RefereeFileLocalDataSource;
 import com.ibrakor.sevillaFc.domain.models.Referee;
 import com.ibrakor.sevillaFc.domain.usecase.AddRefereeUseCase;
 
-public class NewRefereeFrom {
+public class NewRefereeForm {
 
     private void saveReferee(Referee referee){
         AddRefereeUseCase addRefereeUseCase = new AddRefereeUseCase(new RefereeDataRepository(RefereeFileLocalDataSource.getInstance()));
