@@ -1,6 +1,6 @@
 package com.ibrakor.sevillaFc.domain.models;
 
-public class Referee {
+public class Referee extends Person{
 
     private String category;
 
