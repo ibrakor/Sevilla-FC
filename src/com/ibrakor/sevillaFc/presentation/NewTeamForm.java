@@ -14,9 +14,10 @@ public class NewTeamForm {
 
     private Team buildTeam(){
         Team team = new Team();
-        team.setId(1);
+        team.setId(2);
         team.setCategory("Primera Division");
-        team.setName("Sevilla");
+        team.setName("Barca");
+
 
         return team;
     }

@@ -1,6 +1,7 @@
 package com.ibrakor.sevillaFc.domain.usecase;
 
 import com.ibrakor.sevillaFc.domain.PlayerRepository;
+import com.ibrakor.sevillaFc.domain.models.Player;
 
 public class AddPlayerUseCase {
 
@@ -10,5 +11,7 @@ public class AddPlayerUseCase {
         this.playerRepository = playerRepository;
     }
 
-    public void ex
+    public void execute(Player player){
+        playerRepository.save(player);
+    }
 }
